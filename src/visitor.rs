@@ -227,6 +227,16 @@ impl<'b, 'a: 'b> FmtVisitor<'a> {
     ) {
         debug!("visit_block: {}", self.psess.span_to_debug_info(b.span));
 
+        if has_braces && inner_attrs.map_or(true, |a| a.is_empty()) {
+            if let Some(block) =
+                utils::preserved_empty_block(self.snippet(b.span), self.block_indent, self.config)
+            {
+                self.push_str(&block);
+                self.last_pos = b.span.hi();
+                return;
+            }
+        }
+
         // Check if this block has braces.
         let brace_compensation = BytePos(if has_braces { 1 } else { 0 });
 
@@ -1012,7 +1022,18 @@ impl<'b, 'a: 'b> FmtVisitor<'a> {
                 self.snippet(mk_sp(mod_lo, source!(self, inner_span).hi() - BytePos(1)));
             let body_snippet = body_snippet.trim();
             if body_snippet.is_empty() {
-                self.push_str("}");
+                let raw_body =
+                    self.snippet(mk_sp(mod_lo, source!(self, inner_span).hi() - BytePos(1)));
+                let block = utils::preserved_empty_block(
+                    &format!("{{{raw_body}}}"),
+                    self.block_indent,
+                    self.config,
+                );
+                if let Some(block) = block {
+                    self.push_str(&block[1..]);
+                } else {
+                    self.push_str("}");
+                }
             } else {
                 self.last_pos = mod_lo;
                 self.block_indent = self.block_indent.block_indent(self.config);

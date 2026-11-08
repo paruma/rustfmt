@@ -489,6 +489,11 @@ impl<'a> FmtVisitor<'a> {
         }
 
         let context = self.get_context();
+        if preserved_empty_block(context.snippet(block.span), self.block_indent, self.config)
+            .is_some_and(|block| block.contains('\n'))
+        {
+            return None;
+        }
 
         if self.config.empty_item_single_line()
             && is_empty_block(&context, block, None)
@@ -868,6 +873,26 @@ pub(crate) fn format_impl(
                     result.push_str(missing_comment);
                 }
                 _ => (),
+            }
+        }
+    }
+
+    if items.is_empty() {
+        let snippet = context.snippet(item.span);
+        if let Some(open) = snippet.find_uncommented("{") {
+            if let Some(block) =
+                preserved_empty_block(&snippet[open..], offset.block_only(), context.config)
+            {
+                result.push_str(&where_clause_str);
+                result.push_str(
+                    if context.config.brace_style() == BraceStyle::AlwaysNextLine {
+                        &sep
+                    } else {
+                        " "
+                    },
+                );
+                result.push_str(&block);
+                return Ok(result);
             }
         }
     }
@@ -1291,6 +1316,22 @@ pub(crate) fn format_trait(
     let snippet = context.snippet(block_span);
     let open_pos = snippet.find_uncommented("{").unknown_error()? + 1;
 
+    if items.is_empty() {
+        if let Some(block) = preserved_empty_block(
+            &snippet[open_pos - 1..],
+            offset.block_only(),
+            context.config,
+        ) {
+            if context.config.brace_style() == BraceStyle::AlwaysNextLine {
+                result.push_str(&offset.to_string_with_newline(context.config));
+            } else {
+                result.push(' ');
+            }
+            result.push_str(&block);
+            return Ok(result);
+        }
+    }
+
     match context.config.brace_style() {
         _ if last_line_contains_single_line_comment(&result)
             || last_line_width(&result, context.config.tab_spaces()) + 2
@@ -1562,6 +1603,14 @@ pub(crate) fn format_empty_struct_or_tuple(
     opener: &str,
     closer: &str,
 ) {
+    if closer == "}" {
+        let snippet = format!("{{{}}}", context.snippet(span));
+        if let Some(block) = preserved_empty_block(&snippet, offset, context.config) {
+            result.push_str(opener);
+            result.push_str(&block[1..]);
+            return;
+        }
+    }
     // 3 = " {}" or "();"
     let used_width = last_line_used_width(result, offset.width(), context.config.tab_spaces()) + 3;
     if used_width > context.config.max_width() {

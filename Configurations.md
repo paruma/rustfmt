@@ -3357,3 +3357,12 @@ Internal option, use `--backup`
 ## `print_misformatted_file_names`
 
 Internal option, use `-l` or `--files-with-diff`
+
+## `preserve_empty_block_layout`
+
+このフォーク独自の設定。空の波括弧ブロックの元の改行を保持し、内部の空行は最大 1 行まで残します。
+コメントや文を含むブロックは通常どおり整形します。
+
+- **Default value**: `false`
+- **Possible values**: `true`, `false`
+- **Stable**: Yes (このフォークのみ)

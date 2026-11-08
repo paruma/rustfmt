@@ -796,3 +796,24 @@ mod test {
         );
     }
 }
+
+/// Preserve whitespace-only brace bodies, keeping at most one interior blank line.
+pub(crate) fn preserved_empty_block(
+    snippet: &str,
+    indent: Indent,
+    config: &Config,
+) -> Option<String> {
+    if !config.preserve_empty_block_layout() {
+        return None;
+    }
+    let inner = snippet.trim().strip_prefix('{')?.strip_suffix('}')?;
+    if !inner.trim().is_empty() {
+        return None;
+    }
+    let newlines = inner.bytes().filter(|&b| b == b'\n').count();
+    Some(match newlines {
+        0 => "{}".to_owned(),
+        1 => format!("{{{}}}", indent.to_string_with_newline(config)),
+        _ => format!("{{\n{}}}", indent.to_string_with_newline(config)),
+    })
+}

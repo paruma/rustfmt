@@ -86,6 +86,8 @@ create_config! {
         "Add or remove trailing zero in floating-point literals";
 
     // Single line expressions and items
+    preserve_empty_block_layout: PreserveEmptyBlockLayout, true,
+        "Preserve original line breaks and at most one blank line in empty blocks";
     empty_item_single_line: EmptyItemSingleLine, false,
         "Put empty-body functions and impls on a single line";
     struct_lit_single_line: StructLitSingleLine, false,
@@ -776,6 +778,7 @@ format_macro_bodies = true
 skip_macro_invocations = []
 hex_literal_case = "Preserve"
 float_literal_trailing_zero = "Preserve"
+preserve_empty_block_layout = false
 empty_item_single_line = true
 struct_lit_single_line = true
 fn_single_line = false
@@ -869,6 +872,7 @@ format_macro_bodies = true
 skip_macro_invocations = []
 hex_literal_case = "Preserve"
 float_literal_trailing_zero = "Preserve"
+preserve_empty_block_layout = false
 empty_item_single_line = true
 struct_lit_single_line = true
 fn_single_line = false

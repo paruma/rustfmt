@@ -485,6 +485,15 @@ fn rewrite_empty_block(
         return None;
     }
 
+    if attrs.map_or(true, |a| inner_attributes(a).is_empty()) {
+        let snippet = context.snippet(block.span);
+        let open = snippet.find_uncommented("{")?;
+        if let Some(block) =
+            crate::utils::preserved_empty_block(&snippet[open..], shape.indent, context.config)
+        {
+            return Some(format!("{prefix}{}{block}", rewrite_label(context, label)));
+        }
+    }
     let label_str = rewrite_label(context, label);
     if attrs.map_or(false, |a| !inner_attributes(a).is_empty()) {
         return None;

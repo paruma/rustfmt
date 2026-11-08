@@ -140,7 +140,13 @@ pub(crate) fn rewrite_match(
     if arms.is_empty() {
         let snippet = context.snippet(mk_sp(open_brace_pos, span.hi() - BytePos(1)));
         if snippet.trim().is_empty() {
-            Ok(format!("match {cond_str} {{}}"))
+            let block = crate::utils::preserved_empty_block(
+                &format!("{{{snippet}}}"),
+                shape.indent,
+                context.config,
+            )
+            .unwrap_or_else(|| "{}".to_owned());
+            Ok(format!("match {cond_str} {block}"))
         } else {
             // Empty match with comments or inner attributes? We are not going to bother, sorry ;)
             Ok(context.snippet(span).to_owned())
@@ -524,6 +530,7 @@ pub(crate) fn rewrite_match_body(
         let rewrite = nop_block_collapse(
             format_expr(body, ExprType::Statement, context, body_shape),
             body_shape.width,
+            context.config.preserve_empty_block_layout(),
         );
 
         match rewrite {
@@ -546,6 +553,7 @@ pub(crate) fn rewrite_match_body(
     let next_line_body = nop_block_collapse(
         format_expr(body, ExprType::Statement, context, next_line_body_shape),
         next_line_body_shape.width,
+        context.config.preserve_empty_block_layout(),
     );
     match (orig_body, next_line_body) {
         (Ok(ref orig_str), Ok(ref next_line_str))
@@ -610,10 +618,11 @@ fn rewrite_guard(
     }
 }
 
-fn nop_block_collapse(block_str: RewriteResult, budget: usize) -> RewriteResult {
+fn nop_block_collapse(block_str: RewriteResult, budget: usize, preserve: bool) -> RewriteResult {
     debug!("nop_block_collapse {:?} {}", block_str, budget);
     block_str.map(|block_str| {
-        if block_str.starts_with('{')
+        if !preserve
+            && block_str.starts_with('{')
             && budget >= 2
             && (block_str[1..].find(|c: char| !c.is_whitespace()).unwrap() == block_str.len() - 2)
         {
