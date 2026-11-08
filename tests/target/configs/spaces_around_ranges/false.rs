@@ -41,4 +41,5 @@ fn half_open() {
 }
 
 fn pattern_in_function_parameters_exactly_max_width_before_space__(2. ..10.: std::ops::Range<f32>) {
+
 }

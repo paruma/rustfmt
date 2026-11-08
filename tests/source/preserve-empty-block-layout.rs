@@ -1,4 +1,3 @@
-//@ rustfmt-preserve_empty_block_layout: true
 //@ rustfmt-edition: 2021
 
 fn single() {}

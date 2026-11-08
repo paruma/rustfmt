@@ -43,7 +43,8 @@ fn test() {
 }
 
 /// test123
-fn doc_comment() {}
+fn doc_comment() {
+}
 
 fn chains() {
     foo.bar(|| {

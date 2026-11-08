@@ -664,7 +664,6 @@ config_option_with_style_edition_default!(
         FloatLiteralTrailingZero::Preserve;
 
     // Single line expressions and items
-    PreserveEmptyBlockLayout, bool, _ => false;
     EmptyItemSingleLine, bool, _ => true;
     StructLitSingleLine, bool, _ => true;
     FnSingleLine, bool, _ => false;

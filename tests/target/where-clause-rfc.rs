@@ -76,8 +76,7 @@ pub trait Test {
 fn very_long_function_name<F>(very_long_argument: F) -> MyVeryLongReturnType
 where
     F: FnMut(Self::Item) -> bool,
-{
-}
+{}
 
 struct VeryLongTupleStructName<A, B, C, D, E>(LongLongTypename, LongLongTypename, i32, i32)
 where

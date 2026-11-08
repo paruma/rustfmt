@@ -15,7 +15,9 @@ mod foo {
         }
     }
 
-    mod qux {}
+    mod qux {
+
+    }
 }
 
 mod boxed {
@@ -29,8 +31,7 @@ pub mod x {
         mode2: *const c_char,
         mode3: *const c_char,
         file: *mut FILE,
-    ) -> *mut FILE {
-    }
+    ) -> *mut FILE {}
 }
 
 mod y { // sup boooooiiii

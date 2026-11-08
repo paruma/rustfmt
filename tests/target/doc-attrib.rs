@@ -32,7 +32,8 @@ mod tests {
         /// Level 3 comment
         fn f() {
             /// Level 4 comment
-            fn g() {}
+            fn g() {
+            }
         }
     }
 }

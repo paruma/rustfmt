@@ -1,1 +1,1 @@
-[{"name":"<stdin>","mismatches":[{"original_begin_line":1,"original_end_line":6,"expected_begin_line":1,"expected_end_line":2,"original":"\nfn\n some( )\n{\n}\nfn main () {}\n","expected":"fn some() {}\nfn main() {}\n"}]}]
+[{"name":"<stdin>","mismatches":[{"original_begin_line":1,"original_end_line":4,"expected_begin_line":1,"expected_end_line":1,"original":"\nfn\n some( )\n{\n","expected":"fn some() {\n"},{"original_begin_line":6,"original_end_line":6,"expected_begin_line":3,"expected_end_line":3,"original":"fn main () {}\n","expected":"fn main() {}\n"}]}]

@@ -36,5 +36,6 @@ fn main() {
     let Some(x) = y
     // shouldn't be dropped
     // shouldn't be dropped
-    {}
+    {
+    }
 }

@@ -13,8 +13,7 @@ fn simple(
                 Option<&memcache::Item>,
             ) -> (memcache::Status, Result<memcache::Item, Option<String>>),
         >,
-    ) -> MapResult {
-    }
+    ) -> MapResult {}
 
     "cool"
 }
@@ -82,8 +81,7 @@ pub fn start_export_thread<C: CryptoSchemee + 'static>(
     crypto_scheme: &C,
     block_size: usize,
     source_path: &Path,
-) -> BonzoResult<mpsc::Consumer<'static, FileInstruction>> {
-}
+) -> BonzoResult<mpsc::Consumer<'static, FileInstruction>> {}
 
 pub fn waltz(cwd: &Path) -> CliAssert {
     {

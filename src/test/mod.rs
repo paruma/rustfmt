@@ -661,8 +661,9 @@ fn stdin_works_with_modified_lines() {
         fn main () {}
     "};
     let output = indoc! {"
-        1 6 2
-        fn some() {}
+        1 4 1
+        fn some() {
+        6 1 1
         fn main() {}
     "};
 

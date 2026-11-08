@@ -4,5 +4,7 @@ where
     for<'a> &'a Vector<T, { SIZE }>: IntoLength<Output = T>,
 {
     type Output = Vector<T, { SIZE }>;
-    fn into_normalized(self) -> Self::Output {}
+    fn into_normalized(self) -> Self::Output {
+
+    }
 }

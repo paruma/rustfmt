@@ -803,9 +803,6 @@ pub(crate) fn preserved_empty_block(
     indent: Indent,
     config: &Config,
 ) -> Option<String> {
-    if !config.preserve_empty_block_layout() {
-        return None;
-    }
     let inner = snippet.trim().strip_prefix('{')?.strip_suffix('}')?;
     if !inner.trim().is_empty() {
         return None;

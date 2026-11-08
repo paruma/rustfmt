@@ -6,5 +6,4 @@ trait Other<U: ?Sized> {}
 trait Trait<U>
 where
     for<T> U: Other<T>,
-{
-}
+{}

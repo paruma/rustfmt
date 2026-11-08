@@ -1,15 +1,21 @@
 impl TestTrait {
-    fn foo_one_pre(/* Important comment1 */ self) {}
+    fn foo_one_pre(/* Important comment1 */ self) {
+    }
 
-    fn foo_one_post(self /* Important comment1 */) {}
+    fn foo_one_post(self /* Important comment1 */) {
+    }
 
-    fn foo_pre(/* Important comment1 */ self, /* Important comment2 */ a: i32) {}
+    fn foo_pre(/* Important comment1 */ self, /* Important comment2 */ a: i32) {
+    }
 
-    fn foo_post(self /* Important comment1 */, a: i32 /* Important comment2 */) {}
+    fn foo_post(self /* Important comment1 */, a: i32 /* Important comment2 */) {
+    }
 
-    fn bar_pre(/* Important comment1 */ &mut self, /* Important comment2 */ a: i32) {}
+    fn bar_pre(/* Important comment1 */ &mut self, /* Important comment2 */ a: i32) {
+    }
 
-    fn bar_post(&mut self /* Important comment1 */, a: i32 /* Important comment2 */) {}
+    fn bar_post(&mut self /* Important comment1 */, a: i32 /* Important comment2 */) {
+    }
 
     fn baz_pre(
         /* Important comment1 */

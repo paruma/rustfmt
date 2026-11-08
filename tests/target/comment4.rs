@@ -31,7 +31,8 @@ fn test() {
 }
 
 /// test123
-fn doc_comment() {}
+fn doc_comment() {
+}
 
 /*
 Regression test for issue #956

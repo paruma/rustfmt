@@ -33,5 +33,4 @@ fn const_generics_on_params<
     const BBBB: usize,
     /* CCCC */
     const DDDD: usize,
->() {
-}
+>() {}

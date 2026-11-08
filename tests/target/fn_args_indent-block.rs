@@ -120,8 +120,7 @@ trait Test {
         c: Cccccccccccccccccc,
         d: Dddddddddddddddd,
         e: Eeeeeeeeeeeeeee,
-    ) -> String {
-    }
+    ) -> String {}
 }
 
 fn foo<L: Loooooooooooooooooooong, G: Geeeeeeeeeeneric, I: iiiiiiiiis, L: Loooooooooooooooong>(

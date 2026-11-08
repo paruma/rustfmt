@@ -56,7 +56,8 @@ where
     }
 }
 
-impl<T> Foo for Bar<T> where T: Baz {}
+impl<T> Foo for Bar<T> where T: Baz {
+}
 
 impl<T> Foo for Bar<T>
 where
@@ -108,7 +109,9 @@ impl Y5000 {
 
     fn bad(&self, (x, y): CoorT) {}
 
-    fn turbo_bad(self: X<'a, 'b>, (x, y): CoorT) {}
+    fn turbo_bad(self: X<'a, 'b>, (x, y): CoorT) {
+
+    }
 }
 
 pub impl<T> Foo for Bar<T>
@@ -124,8 +127,7 @@ pub impl<T, Z> Foo for Bar<T, Z>
 where
     T: Foo,
     Z: Baz,
-{
-}
+{}
 
 mod m {
     impl<T> PartialEq for S<T>
@@ -157,8 +159,7 @@ mod x {
         B: 'static,
         C: 'static,
         D: 'static,
-    {
-    }
+    {}
 }
 
 impl<ConcreteThreadSafeLayoutNode: ThreadSafeLayoutNodeFoo>
@@ -240,8 +241,7 @@ impl<'seq1, 'seq2, 'body, 'scope, Channel>
     >
 where
     Channel: DmaChannel,
-{
-}
+{}
 
 // #4084
 const impl std::default::Default for Struct {

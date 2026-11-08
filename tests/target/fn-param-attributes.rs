@@ -45,8 +45,7 @@ pub fn bar(
     /// Baz
     #[no_mangle]
     b: i32,
-) {
-}
+) {}
 
 fn abc(
     #[foo]

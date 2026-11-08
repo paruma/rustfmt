@@ -1,7 +1,0 @@
-#!/bin/sh
-# このフォークを、必要な rustc 共有ライブラリとともに起動する。
-set -eu
-repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-toolchain_lib=$(rustc +nightly-2026-11-02 --print sysroot)/lib
-export LD_LIBRARY_PATH="$toolchain_lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec "$repo_dir/target/release/rustfmt" "$@"

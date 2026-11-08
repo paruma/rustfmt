@@ -282,7 +282,9 @@ cfg_select! {
 
     not(
         false // comment
-    ) => {}
+    ) => {
+
+    }
 
     any(
         false // comment
@@ -296,7 +298,9 @@ cfg_select! {
 
     not(false) =>
         /* comment before opening brace */
-        {}
+        {
+
+        }
 
     any(false) =>
     // comment before brace
@@ -397,7 +401,8 @@ cfg_select! {
         compile_error!("foo")
     }
     // make sure that #![feature(cfg_version)] works
-    version("1.44.0") => {}
+    version("1.44.0") => {
+    }
 
     _ => {}
 }
@@ -711,7 +716,9 @@ mod nested {
 
         not(
             false // comment
-        ) => {}
+        ) => {
+
+        }
 
         any(
             false // comment
@@ -725,7 +732,9 @@ mod nested {
 
         not(false) =>
             /* comment before opening brace */
-            {}
+            {
+
+            }
 
         any(false) =>
         // comment before brace
@@ -817,7 +826,8 @@ mod nested {
             compile_error!("foo")
         }
         // make sure that #![feature(cfg_version)] works
-        version("1.44.0") => {}
+        version("1.44.0") => {
+        }
 
         _ => {}
     }

@@ -12,26 +12,20 @@ fn qux() -> () /* comment */ where /* comment */ {}
 
 fn implicit_line_before() // c1
 where
-{
-}
+{}
 fn implicit_line_after() where // c2
-{
-}
+{}
 fn implicit_line_both() // c1
 where // c2
-{
-}
+{}
 
 fn explicit_line_before() -> () // c1
-where {
-}
+where {}
 fn explicit_line_after() -> () where // c2
-{
-}
+{}
 fn line_comments() -> () // c1
 where // c2
-{
-}
+{}
 
 foo! {
     fn implicit_ret_ty() where {}

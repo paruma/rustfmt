@@ -6,7 +6,8 @@ use std::str;
 use std::ddd;
 use std::ddd::bbb;
 
-mod test {}
+mod test {
+}
 
 use aaa;
 use aaa::bbb;

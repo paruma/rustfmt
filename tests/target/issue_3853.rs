@@ -27,7 +27,8 @@ fn no_prefix_block_before_ident() {
 }
 
 fn issue_3853() {
-    if let Some(ref /*mut*/ state) = foo {}
+    if let Some(ref /*mut*/ state) = foo {
+    }
 }
 
 fn double_slash_comment_between_lhs_and_rhs() {

@@ -7,11 +7,9 @@ impl Foo {
         &mut self,
         input: Input,
         input_path: Option<PathBuf>,
-    ) -> (Input, Option<PathBuf>) {
-    }
+    ) -> (Input, Option<PathBuf>) {}
 
-    fn some_inpu(&mut self, input: Input, input_path: Option<PathBuf>) -> (Input, Option<PathBuf>) {
-    }
+    fn some_inpu(&mut self, input: Input, input_path: Option<PathBuf>) -> (Input, Option<PathBuf>) {}
 }
 
 // #1843
@@ -24,6 +22,5 @@ pub extern "C" fn Java_com_exonum_binding_storage_indices_ValueSetIndexProxy_nat
 // #3009
 impl Something {
     fn my_function_name_is_way_to_long_but_used_as_a_case_study_or_an_example_its_fine(
-    ) -> Result<(), String> {
-    }
+    ) -> Result<(), String> {}
 }

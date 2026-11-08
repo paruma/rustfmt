@@ -14,8 +14,7 @@ fn main() {
 		..something
 	};
 
-	fn foo(a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32) {
-	}
+	fn foo(a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32, a: i32) {}
 
 	let str = "AAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAa";
 
@@ -23,7 +22,8 @@ fn main() {
 		some_very_large,
 		tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuple,
 	) = 1 + 2 + 3
-	{}
+	{
+	}
 
 	if cond() {
 		something();
@@ -35,8 +35,7 @@ fn main() {
 	}
 
 	unsafe /* very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
-	        * comment */ {
-	}
+	        * comment */ {}
 
 	unsafe /* So this is a very long comment.
 	        * Multi-line, too.

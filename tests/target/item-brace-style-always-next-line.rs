@@ -41,17 +41,25 @@ mod M
         T: Copy, {}
 }
 
-fn function() {}
+fn function()
+{
 
-trait Trait {}
+}
 
-impl<T> Trait for T {}
+trait Trait
+{
+
+}
+
+impl<T> Trait for T
+{
+
+}
 
 trait Trait2<T>
 where
     T: Copy + Display + Write + Read + FromStr,
-{
-}
+{}
 
 trait Trait3<T>
 where
@@ -67,5 +75,4 @@ where
         + Display
         + Write
         + Read,
-{
-}
+{}

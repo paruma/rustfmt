@@ -56,14 +56,12 @@ where
 trait Tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt<T>
 where
     T: Foo,
-{
-}
+{}
 
 trait Ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt<T>
 where
     T: Foo,
-{
-}
+{}
 
 trait FooBar<T>: Tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 where
@@ -76,8 +74,7 @@ trait WhereList<T, J>
 where
     T: Foo,
     J: Bar,
-{
-}
+{}
 
 trait X /* comment */ {}
 trait Y // comment

@@ -2,8 +2,7 @@ fn a(
     a: & // Comment
     // Another comment
     'a File,
-) {
-}
+) {}
 
 fn b(b: & /* Another Comment */ 'a File) {}
 
@@ -16,19 +15,16 @@ fn d(
     mut // Multi Line
     // Comment
     File,
-) {
-}
+) {}
 
 fn e(
     c: & // Comment
     File,
-) {
-}
+) {}
 
 fn d(
     c: & // Comment
     mut // Multi Line
     // Comment
     File,
-) {
-}
+) {}

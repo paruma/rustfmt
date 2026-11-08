@@ -51,5 +51,4 @@ fn pathological() -> impl use<
     'a,
     'a,
     'a,
-> + Sized {
-}
+> + Sized {}

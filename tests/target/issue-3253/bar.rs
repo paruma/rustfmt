@@ -1,2 +1,4 @@
 // Empty
-fn empty() {}
+fn empty() {
+
+}

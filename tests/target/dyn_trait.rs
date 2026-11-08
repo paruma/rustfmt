@@ -19,8 +19,7 @@ fn main() {
             dyn Very_______________________Long__________________Name____________________Trait
                 + 'static,
         >,
-    ) {
-    }
+    ) {}
 
     // #2582
     let _: &dyn (::std::any::Any) = &msg;

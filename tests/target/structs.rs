@@ -235,7 +235,8 @@ struct Issue677 {
 }
 
 struct Foo {}
-struct Foo {}
+struct Foo {
+}
 struct Foo {
     // comment
 }

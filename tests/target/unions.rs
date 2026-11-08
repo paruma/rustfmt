@@ -129,7 +129,8 @@ union Issue677 {
 }
 
 union Foo {}
-union Foo {}
+union Foo {
+}
 union Foo {
     // comment
 }

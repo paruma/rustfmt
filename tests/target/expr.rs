@@ -56,7 +56,8 @@ fn foo() -> bool {
         some_very_large,
         tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuple,
     ) = 1 + 2 + 3
-    {}
+    {
+    }
 
     if let (
         some_very_large,
@@ -68,7 +69,8 @@ fn foo() -> bool {
         some_very_large,
         tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuple,
     ) = 1 + 2 + 3
-    {}
+    {
+    }
 
     if let ast::ItemKind::Trait(_, unsafety, ref generics, ref type_param_bounds, ref trait_items) =
         item.node
@@ -141,8 +143,7 @@ fn baz() {
     }
 
     unsafe /* very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
-            * comment */ {
-    }
+            * comment */ {}
 
     unsafe /* So this is a very long comment.
             * Multi-line, too.
@@ -172,7 +173,9 @@ fn qux() {
     {}
     // FIXME this one could be done better.
     { /* a block with a comment */ }
-    {}
+    {
+
+    }
     {
         // A block with a comment.
     }
@@ -342,13 +345,15 @@ fn issue1106() {
     {
         if let hir::ItemEnum(ref enum_def, ref generics) =
             self.ast_map.expect_item(enum_node_id).node
-        {}
+        {
+        }
     }
 
     for entry in WalkDir::new(path)
         .into_iter()
         .filter_entry(|entry| exclusions.filter_entry(entry))
-    {}
+    {
+    }
 }
 
 fn issue1570() {

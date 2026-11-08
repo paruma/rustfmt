@@ -119,16 +119,21 @@ fn issue339() {
     match a {
         b => {}
         c => {}
-        d => {}
-        e => {}
+        d => {
+        }
+        e => {
+
+        }
         // collapsing here is safe
-        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff => {}
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff => {
+        }
         // collapsing here exceeds line length
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffg => {
         }
         h => { // comment above block
         }
-        i => {} // comment below block
+        i => {
+        } // comment below block
         j => {
             // comment inside block
         }
@@ -144,20 +149,26 @@ fn issue339() {
         //     // comment with ws below
         //
         // }
-        m => {}
+        m => {
+        }
         n => {}
-        o => {}
+        o => {
+
+        }
         p => { // Don't collapse me
         }
         q => {}
-        r => {}
+        r => {
+
+        }
         s => 0, // s comment
         // t comment
         t => 1,
         u => 2,
-        v => {} /* funky block
-                 * comment */
-                /* final comment */
+        v => {
+        } /* funky block
+           * comment */
+          /* final comment */
     }
 }
 
@@ -455,8 +466,11 @@ fn match_with_trailing_spaces() {
 }
 
 fn issue_2099() {
-    let a = match x {};
-    let b = match x {};
+    let a = match x {
+    };
+    let b = match x {
+
+    };
 
     match x {}
 }
@@ -476,7 +490,9 @@ impl<'tcx> Const<'tcx> {
 // #2151
 fn issue_2151() {
     match either {
-        x => {}
+        x => {
+
+        }
         y => (),
     }
 }
@@ -572,7 +588,8 @@ fn issue_3030() {
                 // A valid number is the same as what rust considers to be valid,
                 // except for +1., NaN, and Infinity.
                 val.is_infinite() || val.is_nan() || input.ends_with(".") || input.starts_with("+")
-            ) => {}
+            ) => {
+        }
     }
 }
 

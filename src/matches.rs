@@ -527,11 +527,7 @@ pub(crate) fn rewrite_match_body(
     let orig_body = if forbid_same_line || !arrow_comment.is_empty() {
         Err(RewriteError::Unknown)
     } else if let Some(body_shape) = orig_body_shape {
-        let rewrite = nop_block_collapse(
-            format_expr(body, ExprType::Statement, context, body_shape),
-            body_shape.width,
-            context.config.preserve_empty_block_layout(),
-        );
+        let rewrite = format_expr(body, ExprType::Statement, context, body_shape);
 
         match rewrite {
             Ok(ref body_str)
@@ -550,11 +546,7 @@ pub(crate) fn rewrite_match_body(
 
     // Try putting body on the next line and see if it looks better.
     let next_line_body_shape = Shape::indented(next_line_indent, context.config);
-    let next_line_body = nop_block_collapse(
-        format_expr(body, ExprType::Statement, context, next_line_body_shape),
-        next_line_body_shape.width,
-        context.config.preserve_empty_block_layout(),
-    );
+    let next_line_body = format_expr(body, ExprType::Statement, context, next_line_body_shape);
     match (orig_body, next_line_body) {
         (Ok(ref orig_str), Ok(ref next_line_str))
             if prefer_next_line(orig_str, next_line_str, RhsTactics::Default) =>
@@ -616,21 +608,6 @@ fn rewrite_guard(
     } else {
         Ok(String::new())
     }
-}
-
-fn nop_block_collapse(block_str: RewriteResult, budget: usize, preserve: bool) -> RewriteResult {
-    debug!("nop_block_collapse {:?} {}", block_str, budget);
-    block_str.map(|block_str| {
-        if !preserve
-            && block_str.starts_with('{')
-            && budget >= 2
-            && (block_str[1..].find(|c: char| !c.is_whitespace()).unwrap() == block_str.len() - 2)
-        {
-            String::from("{}")
-        } else {
-            block_str
-        }
-    })
 }
 
 fn can_flatten_block_around_this(body: &ast::Expr) -> bool {

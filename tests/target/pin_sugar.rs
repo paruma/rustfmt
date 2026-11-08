@@ -29,5 +29,4 @@ fn patterns<'a>(
     &pin const y: &'a pin const i32,
     ref pin mut z: i32,
     mut ref pin const w: i32,
-) {
-}
+) {}

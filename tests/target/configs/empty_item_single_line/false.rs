@@ -2,9 +2,11 @@
 // Empty impl on single line
 
 impl Lorem {
+
 }
 
 impl Ipsum {
+
 }
 
 fn lorem() {

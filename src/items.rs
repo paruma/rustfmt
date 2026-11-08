@@ -885,7 +885,10 @@ pub(crate) fn format_impl(
             {
                 result.push_str(&where_clause_str);
                 result.push_str(
-                    if context.config.brace_style() == BraceStyle::AlwaysNextLine {
+                    if context.config.brace_style() == BraceStyle::AlwaysNextLine
+                        || last_line_contains_single_line_comment(&result)
+                        || result.contains('\n')
+                    {
                         &sep
                     } else {
                         " "
@@ -1322,7 +1325,11 @@ pub(crate) fn format_trait(
             offset.block_only(),
             context.config,
         ) {
-            if context.config.brace_style() == BraceStyle::AlwaysNextLine {
+            if context.config.brace_style() == BraceStyle::AlwaysNextLine
+                || last_line_contains_single_line_comment(&result)
+                || (context.config.brace_style() == BraceStyle::SameLineWhere
+                    && result.contains('\n'))
+            {
                 result.push_str(&offset.to_string_with_newline(context.config));
             } else {
                 result.push(' ');

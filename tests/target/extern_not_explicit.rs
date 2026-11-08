@@ -4,7 +4,9 @@ extern {
     fn some_fn() -> ();
 }
 
-extern fn sup() {}
+extern fn sup() {
+
+}
 
 type funky_func = extern fn(
     unsafe extern "rust-call" fn(

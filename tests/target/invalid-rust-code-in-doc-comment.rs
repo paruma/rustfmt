@@ -3,14 +3,16 @@
 /// ```rust
 /// if (true) { … }
 /// ```
-fn a() {}
+fn a() {
+}
 
 /// ```rust
 /// if foo() {
 ///     …
 /// }
 /// ```
-fn a() {}
+fn a() {
+}
 
 /// ```rust
 /// k1 == k2 ⇒ hash(k1) == hash(k2)
